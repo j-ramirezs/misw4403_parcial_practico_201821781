@@ -1,11 +1,11 @@
-import { IsEmail, IsISO8601, IsNotEmpty, IsString } from 'class-validator';
+import { IsISO8601, IsNotEmpty, IsString } from 'class-validator';
 
 export class SocioDto {
   @IsString()
   @IsNotEmpty()
   readonly nombreUsuario: string;
 
-  @IsEmail()
+  @IsString()
   @IsNotEmpty()
   readonly correoElectronico: string;
 
