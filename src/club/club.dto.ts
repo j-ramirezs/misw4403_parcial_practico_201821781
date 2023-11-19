@@ -1,11 +1,11 @@
-import { IsDate, IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import { IsISO8601, IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
 export class ClubDto {
   @IsString()
   @IsNotEmpty()
   readonly nombre: string;
 
-  @IsDate()
+  @IsISO8601()
   @IsNotEmpty()
   readonly fechaFundacion: Date;
 
