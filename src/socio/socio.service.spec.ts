@@ -36,6 +36,7 @@ describe('SocioService', () => {
         nombreUsuario: faker.internet.userName(),
         correoElectronico: faker.internet.email(),
         fechaNacimiento: faker.date.past(),
+        clubes: [],
       });
       sociosList.push(socio);
     }

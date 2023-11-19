@@ -37,6 +37,7 @@ describe('ClubService', () => {
         fechaFundacion: faker.date.past(),
         imagen: faker.image.url(),
         descripcion: faker.lorem.sentence(),
+        socios: [],
       });
       clubesList.push(club);
     }

@@ -24,7 +24,7 @@ export class ClubEntity {
   @Column()
   descripcion: string;
 
-  @ManyToMany(() => SocioEntity, (socio) => socio.clubes)
+  @ManyToMany(() => SocioEntity, (socios) => socios.clubes)
   @JoinTable()
   socios: SocioEntity[];
 }

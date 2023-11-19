@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SocioEntity } from './socio.entity';
-import { Repository } from 'typeorm';
+import { Repository } from 'typeorm/repository/Repository';
 import {
   BusinessError,
   BusinessLogicException,
@@ -45,6 +45,7 @@ export class SocioService {
   async update(id: string, socio: SocioEntity): Promise<SocioEntity> {
     const persistedSocio: SocioEntity = await this.socioRepository.findOne({
       where: { id },
+      relations: ['clubes'],
     });
     if (!persistedSocio)
       throw new BusinessLogicException(
@@ -63,6 +64,7 @@ export class SocioService {
   async delete(id: string) {
     const socio: SocioEntity = await this.socioRepository.findOne({
       where: { id },
+      relations: ['clubes'],
     });
     if (!socio)
       throw new BusinessLogicException(

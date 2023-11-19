@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ClubEntity } from './club.entity';
-import { Repository } from 'typeorm';
+import { Repository } from 'typeorm/repository/Repository';
 import {
   BusinessError,
   BusinessLogicException,
@@ -45,6 +45,7 @@ export class ClubService {
   async update(id: string, club: ClubEntity): Promise<ClubEntity> {
     const persistedClub: ClubEntity = await this.clubRepository.findOne({
       where: { id },
+      relations: ['socios'],
     });
     if (!persistedClub)
       throw new BusinessLogicException(
@@ -63,6 +64,7 @@ export class ClubService {
   async delete(id: string) {
     const club: ClubEntity = await this.clubRepository.findOne({
       where: { id },
+      relations: ['socios'],
     });
     if (!club)
       throw new BusinessLogicException(
